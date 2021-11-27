@@ -1,7 +1,7 @@
-﻿using System.Windows.Forms;
-using System;
+﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace BaskEditor
 {
@@ -12,15 +12,15 @@ namespace BaskEditor
         public TelaInicial()
         {
             InitializeComponent();
-            richTextBox1.SelectionFont = new Font ("Tahoma", 12, FontStyle.Regular);
+            richTextBox1.SelectionFont = new Font("Tahoma", 12, FontStyle.Regular);
         }
 
         //MÉTODOS
-        private void SalvarArquivo() 
+        private void SalvarArquivo()
         {
-            try 
+            try
             {
-                if(this.saveFileDialog1.ShowDialog() == DialogResult.OK) 
+                if (this.saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     FileStream fileStream = new FileStream(saveFileDialog1.FileName, FileMode.OpenOrCreate,
                     FileAccess.Write);
@@ -33,29 +33,29 @@ namespace BaskEditor
                     streamWriter.Close();
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro! " + ex.Message);
             }
         }
 
-        private void VerificarSalvarArquivo() 
+        private void VerificarSalvarArquivo()
         {
-            if (string.IsNullOrEmpty(richTextBox1.Text)) 
+            if (string.IsNullOrEmpty(richTextBox1.Text))
             {
                 MessageBox.Show("Impossível salvar um arquivo vazio!", "Arquivo Vazio");
             }
-            else 
+            else
             {
-                if((MessageBox.Show("Deseja salvar o arquivo?", "Salvar Arquivo", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)) 
+                if ((MessageBox.Show("Deseja salvar o arquivo?", "Salvar Arquivo", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes))
                 {
                     SalvarArquivo();
                 }
             }
         }
 
-        private void AbrirArquivo() 
+        private void AbrirArquivo()
         {
             this.openFileDialog1.Multiselect = true;
             this.openFileDialog1.Title = "Selecionar Arquivo";
@@ -72,9 +72,9 @@ namespace BaskEditor
 
             DialogResult dialogResult = this.openFileDialog1.ShowDialog();
 
-            if(dialogResult == System.Windows.Forms.DialogResult.OK) 
+            if (dialogResult == DialogResult.OK)
             {
-                try 
+                try
                 {
                     FileStream fileStream = new FileStream(openFileDialog1.FileName, FileMode.Open,
                 FileAccess.Read);
@@ -92,70 +92,64 @@ namespace BaskEditor
                     }
                     streamReader.Close();
                 }
-                catch(Exception ex) 
+                catch (Exception ex)
                 {
                     MessageBox.Show("Erro! " + ex.Message);
                 }
             }
         }
 
-        private void AtivarNegrito() 
+        private void AtivarNegrito()
         {
-            string nomeDaFonte = null;
             float tamanhoDaFonte = 0;
             bool negrito = false;
 
-            nomeDaFonte = richTextBox1.Font.Name;
             tamanhoDaFonte = richTextBox1.Font.Size;
             negrito = richTextBox1.Font.Bold;
 
-            if(negrito == false) 
+            if (negrito == false)
             {
-                richTextBox1.SelectionFont = new Font(nomeDaFonte, tamanhoDaFonte, FontStyle.Bold);
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Bold);
             }
-            else 
+            else
             {
-                richTextBox1.SelectionFont = new Font(nomeDaFonte, tamanhoDaFonte, FontStyle.Regular);
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Regular);
             }
         }
 
-        private void AtivarItalico() 
+        private void AtivarItalico()
         {
-            string nomeDaFonte = null;
             float tamanhoDaFonte = 0;
             bool italico = false;
 
-            nomeDaFonte = richTextBox1.Font.Name;
             tamanhoDaFonte = richTextBox1.Font.Size;
             italico = richTextBox1.Font.Italic;
 
             if (italico == false)
             {
-                richTextBox1.SelectionFont = new Font(nomeDaFonte, tamanhoDaFonte, FontStyle.Italic);
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Italic);
             }
             else
             {
-                richTextBox1.SelectionFont = new Font(nomeDaFonte, tamanhoDaFonte, FontStyle.Regular);
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Regular);
             }
         }
 
-        private void AtivarSublinhado() 
+        private void AtivarSublinhado()
         {
-            string nomeDaFonte = null;
             float tamanhoDaFonte = 0;
             bool sublinhado = false;
 
-            nomeDaFonte = richTextBox1.Font.Name;
             tamanhoDaFonte = richTextBox1.Font.Size;
             sublinhado = richTextBox1.Font.Underline;
 
             if (sublinhado == false)
             {
-                richTextBox1.SelectionFont = new Font(nomeDaFonte, tamanhoDaFonte, FontStyle.Underline);
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Underline);
             }
             else
             {
-                richTextBox1.SelectionFont = new Font(nomeDaFonte, tamanhoDaFonte, FontStyle.Regular);
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Regular);
             }
         }
 
@@ -163,33 +157,34 @@ namespace BaskEditor
         {
             DialogResult resultado = fontDialog1.ShowDialog();
 
-            if(richTextBox1.SelectionFont != null) 
+            if (richTextBox1.SelectionFont != null)
             {
                 richTextBox1.SelectionFont = fontDialog1.Font;
             }
         }
 
-        private void ConfigurarImpressora() 
+        private void ConfigurarImpressora()
         {
-            try 
+            try
             {
                 this.printDialog1.Document = this.printDocument1;
                 printDialog1.ShowDialog();
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro!" + ex.Message);
             }
         }
 
-        public void Imprimir() 
+        //CONFIGURAÇÕES PARA IMPRESSÃO
+        public void Imprimir()
         {
             printDialog1.Document = printDocument1;
 
             string documentoASerImpresso = this.richTextBox1.Text;
             imprima = new StringReader(documentoASerImpresso);
 
-            if(printPreviewDialog1.ShowDialog() == DialogResult.OK) 
+            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
             {
                 this.printDocument1.Print();
             }
@@ -220,7 +215,7 @@ namespace BaskEditor
             linhasPagina = e.MarginBounds.Height / fonteImprimir.GetHeight(e.Graphics);
             linha = imprima.ReadLine();
 
-            while(contador < linhasPagina) 
+            while (contador < linhasPagina)
             {
                 y = (margemDeCima + (contador * fonteImprimir.GetHeight(e.Graphics)));
                 e.Graphics.DrawString(linha, fonteImprimir, pincel, margemEsquerda, y, new StringFormat());
@@ -228,11 +223,11 @@ namespace BaskEditor
                 contador += 1;
                 linha = imprima.ReadLine();
             }
-            if(linha != null) 
+            if (linha != null)
             {
                 e.HasMorePages = true;
             }
-            else 
+            else
             {
                 e.HasMorePages = false;
             }
@@ -328,7 +323,7 @@ namespace BaskEditor
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            == DialogResult.Yes) 
+            == DialogResult.Yes)
             {
                 Application.Exit();
             }
