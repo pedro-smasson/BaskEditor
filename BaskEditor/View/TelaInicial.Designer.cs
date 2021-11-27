@@ -142,6 +142,7 @@ namespace BaskEditor
             this.alterarFonteToolStripMenuItem.Name = "alterarFonteToolStripMenuItem";
             this.alterarFonteToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.alterarFonteToolStripMenuItem.Text = "Alterar Fonte";
+            this.alterarFonteToolStripMenuItem.Click += new System.EventHandler(this.alterarFonteToolStripMenuItem_Click);
             // 
             // alinharTextoToolStripMenuItem
             // 
@@ -156,20 +157,23 @@ namespace BaskEditor
             // esquerdaToolStripMenuItem
             // 
             this.esquerdaToolStripMenuItem.Name = "esquerdaToolStripMenuItem";
-            this.esquerdaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.esquerdaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.esquerdaToolStripMenuItem.Text = "Esquerda";
+            this.esquerdaToolStripMenuItem.Click += new System.EventHandler(this.esquerdaToolStripMenuItem_Click);
             // 
             // centralizadoToolStripMenuItem
             // 
             this.centralizadoToolStripMenuItem.Name = "centralizadoToolStripMenuItem";
-            this.centralizadoToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.centralizadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.centralizadoToolStripMenuItem.Text = "Centralizado";
+            this.centralizadoToolStripMenuItem.Click += new System.EventHandler(this.centralizadoToolStripMenuItem_Click);
             // 
             // direitaToolStripMenuItem
             // 
             this.direitaToolStripMenuItem.Name = "direitaToolStripMenuItem";
-            this.direitaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.direitaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.direitaToolStripMenuItem.Text = "Direita";
+            this.direitaToolStripMenuItem.Click += new System.EventHandler(this.direitaToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -181,18 +185,21 @@ namespace BaskEditor
             this.configuraçõesImpressãoToolStripMenuItem.Name = "configuraçõesImpressãoToolStripMenuItem";
             this.configuraçõesImpressãoToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.configuraçõesImpressãoToolStripMenuItem.Text = "Configurações Impressão";
+            this.configuraçõesImpressãoToolStripMenuItem.Click += new System.EventHandler(this.configuraçõesImpressãoToolStripMenuItem_Click);
             // 
             // imprimirToolStripMenuItem
             // 
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
             this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.imprimirToolStripMenuItem.Text = "Imprimir";
+            this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -296,6 +303,7 @@ namespace BaskEditor
             this.tsImprimir.Name = "tsImprimir";
             this.tsImprimir.Size = new System.Drawing.Size(23, 22);
             this.tsImprimir.Text = "Imprimir";
+            this.tsImprimir.Click += new System.EventHandler(this.tsImprimir_Click);
             // 
             // tsSair
             // 
@@ -321,6 +329,10 @@ namespace BaskEditor
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // printPreviewDialog1
             // 

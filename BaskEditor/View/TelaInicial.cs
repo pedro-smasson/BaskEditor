@@ -7,9 +7,12 @@ namespace BaskEditor
 {
     public partial class TelaInicial : Form
     {
+        private StringReader imprima;
+
         public TelaInicial()
         {
             InitializeComponent();
+            richTextBox1.SelectionFont = new Font ("Tahoma", 12, FontStyle.Regular);
         }
 
         //MÉTODOS
@@ -156,6 +159,86 @@ namespace BaskEditor
             }
         }
 
+        private void AlterarFonte()
+        {
+            DialogResult resultado = fontDialog1.ShowDialog();
+
+            if(richTextBox1.SelectionFont != null) 
+            {
+                richTextBox1.SelectionFont = fontDialog1.Font;
+            }
+        }
+
+        private void ConfigurarImpressora() 
+        {
+            try 
+            {
+                this.printDialog1.Document = this.printDocument1;
+                printDialog1.ShowDialog();
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show("Erro!" + ex.Message);
+            }
+        }
+
+        public void Imprimir() 
+        {
+            printDialog1.Document = printDocument1;
+
+            string documentoASerImpresso = this.richTextBox1.Text;
+            imprima = new StringReader(documentoASerImpresso);
+
+            if(printPreviewDialog1.ShowDialog() == DialogResult.OK) 
+            {
+                this.printDocument1.Print();
+            }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            float linhasPagina;
+            float y;
+            int contador = 0;
+
+            float margemEsquerda = e.MarginBounds.Left - 50;
+            float margemDeCima = e.MarginBounds.Top - 50;
+
+            if (margemEsquerda < 5)
+            {
+                margemEsquerda = 20;
+            }
+            if (margemDeCima < 5)
+            {
+                margemDeCima = 20;
+            }
+
+            string linha = null;
+            Font fonteImprimir = this.richTextBox1.Font;
+            SolidBrush pincel = new SolidBrush(Color.Black);
+
+            linhasPagina = e.MarginBounds.Height / fonteImprimir.GetHeight(e.Graphics);
+            linha = imprima.ReadLine();
+
+            while(contador < linhasPagina) 
+            {
+                y = (margemDeCima + (contador * fonteImprimir.GetHeight(e.Graphics)));
+                e.Graphics.DrawString(linha, fonteImprimir, pincel, margemEsquerda, y, new StringFormat());
+
+                contador += 1;
+                linha = imprima.ReadLine();
+            }
+            if(linha != null) 
+            {
+                e.HasMorePages = true;
+            }
+            else 
+            {
+                e.HasMorePages = false;
+            }
+            pincel.Dispose();
+        }
+
 
         //EVENTOS
         private void abrirDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -205,6 +288,50 @@ namespace BaskEditor
         private void tsSublinhado_Click(object sender, EventArgs e)
         {
             AtivarSublinhado();
+        }
+
+        private void alterarFonteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AlterarFonte();
+        }
+
+        private void esquerdaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
+        }
+
+        private void centralizadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
+        }
+
+        private void direitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
+        }
+
+        private void configuraçõesImpressãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarImpressora();
+        }
+
+        private void tsImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimir();
+        }
+
+        private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Imprimir();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            == DialogResult.Yes) 
+            {
+                Application.Exit();
+            }
         }
     }
 }
