@@ -71,13 +71,16 @@ namespace BaskEditor
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arquivoToolStripMenuItem,
             this.opçõesToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(166, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -96,33 +99,33 @@ namespace BaskEditor
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.novoToolStripMenuItem.Text = "Novo Documento";
             this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
             // abrirDocumentoToolStripMenuItem
             // 
             this.abrirDocumentoToolStripMenuItem.Name = "abrirDocumentoToolStripMenuItem";
-            this.abrirDocumentoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.abrirDocumentoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.abrirDocumentoToolStripMenuItem.Text = "Abrir Documento";
             this.abrirDocumentoToolStripMenuItem.Click += new System.EventHandler(this.abrirDocumentoToolStripMenuItem_Click);
             // 
             // salvarDocumentoToolStripMenuItem
             // 
             this.salvarDocumentoToolStripMenuItem.Name = "salvarDocumentoToolStripMenuItem";
-            this.salvarDocumentoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.salvarDocumentoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salvarDocumentoToolStripMenuItem.Text = "Salvar Documento";
             this.salvarDocumentoToolStripMenuItem.Click += new System.EventHandler(this.salvarDocumentoToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(172, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // fecharDocumentoToolStripMenuItem
             // 
             this.fecharDocumentoToolStripMenuItem.Name = "fecharDocumentoToolStripMenuItem";
-            this.fecharDocumentoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.fecharDocumentoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fecharDocumentoToolStripMenuItem.Text = "Fechar Documento";
             // 
             // opçõesToolStripMenuItem
