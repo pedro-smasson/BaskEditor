@@ -328,5 +328,35 @@ namespace BaskEditor
                 Application.Exit();
             }
         }
+
+        //SETANDO ATALHOS DE TECLADO
+        private void TelaInicial_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.S)
+            {
+                VerificarSalvarArquivo();
+            }
+
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.P)
+            {
+                Imprimir();
+            }
+
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.N)
+            {
+                AtivarNegrito();
+            }
+
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.I)
+            {
+                AtivarItalico();
+            }
+
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.U)
+            {
+                AtivarSublinhado();
+            }
+
+        }
     }
 }

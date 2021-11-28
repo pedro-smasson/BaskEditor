@@ -357,10 +357,12 @@ namespace BaskEditor
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "TelaInicial";
             this.Text = "BaskEditor - v1.0";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TelaInicial_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
