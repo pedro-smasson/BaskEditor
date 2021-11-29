@@ -316,6 +316,7 @@ namespace BaskEditor
             this.tsSair.Name = "tsSair";
             this.tsSair.Size = new System.Drawing.Size(23, 20);
             this.tsSair.Text = "Sair";
+            this.tsSair.Click += new System.EventHandler(this.tsSair_Click);
             // 
             // richTextBox1
             // 

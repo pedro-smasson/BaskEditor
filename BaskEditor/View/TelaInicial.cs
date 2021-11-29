@@ -7,11 +7,12 @@ namespace BaskEditor
 {
     public partial class TelaInicial : Form
     {
-        private StringReader imprima;
+        private StringReader _imprima;
 
         public TelaInicial()
         {
             InitializeComponent();
+            // SETANDO TAHOMA 12 COMO FONTE PADRÃO DO APP
             richTextBox1.SelectionFont = new Font("Tahoma", 12, FontStyle.Regular);
         }
 
@@ -101,6 +102,7 @@ namespace BaskEditor
             }
         }
 
+        //MÉTODOS DE MODIFICAÇÃO DE TEXTO
         private void AtivarNegrito()
         {
             float tamanhoDaFonte = 0;
@@ -162,6 +164,7 @@ namespace BaskEditor
             }
         }
 
+        //MÉTODOS PARA CONFIGURAÇÕES DE IMPRESSÃO
         private void ConfigurarImpressora()
         {
             try
@@ -175,15 +178,14 @@ namespace BaskEditor
             }
         }
 
-        //CONFIGURAÇÕES PARA IMPRESSÃO
         public void Imprimir()
         {
             printDialog1.Document = printDocument1;
 
             string documentoASerImpresso = this.richTextBox1.Text;
-            imprima = new StringReader(documentoASerImpresso);
+            _imprima = new StringReader(documentoASerImpresso);
 
-            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+            if (printDialog1.ShowDialog() == DialogResult.OK)
             {
                 this.printDocument1.Print();
             }
@@ -212,7 +214,7 @@ namespace BaskEditor
             SolidBrush pincel = new SolidBrush(Color.Black);
 
             linhasPagina = e.MarginBounds.Height / fonteImprimir.GetHeight(e.Graphics);
-            linha = imprima.ReadLine();
+            linha = _imprima.ReadLine();
 
             while (contador < linhasPagina)
             {
@@ -220,7 +222,7 @@ namespace BaskEditor
                 e.Graphics.DrawString(linha, fonteImprimir, pincel, margemEsquerda, y, new StringFormat());
 
                 contador += 1;
-                linha = imprima.ReadLine();
+                linha = _imprima.ReadLine();
             }
             if (linha != null)
             {
@@ -234,7 +236,7 @@ namespace BaskEditor
         }
 
 
-        //EVENTOS
+        //EVENTOS DO APP
         private void abrirDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirArquivo();
@@ -320,6 +322,15 @@ namespace BaskEditor
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void tsSair_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             == DialogResult.Yes)
