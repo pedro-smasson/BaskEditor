@@ -60,7 +60,9 @@ namespace BaskEditor
             this.openFileDialog1.Multiselect = true;
             this.openFileDialog1.Title = "Selecionar Arquivo";
             openFileDialog1.InitialDirectory = @"C:\BaskEditor\Arquivos";
-            openFileDialog1.Filter = "Arquivos de texto (*.txt)|*.txt|Todos os arquivos (*.*)|*.*";
+            openFileDialog1.Filter = "Text Documents|*.txt";
+            openFileDialog1.ValidateNames = true;
+            openFileDialog1.Multiselect = false;
 
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.CheckPathExists = true;
@@ -102,12 +104,10 @@ namespace BaskEditor
         private void AtivarNegrito()
         {
             float tamanhoDaFonte = 0;
-            bool negrito = false;
-
             tamanhoDaFonte = richTextBox1.Font.Size;
-            negrito = richTextBox1.Font.Bold;
+            var verificarSeNegritoEstaAtivo = richTextBox1.SelectionFont.Style == FontStyle.Regular;
 
-            if (negrito == false)
+            if (verificarSeNegritoEstaAtivo == true)
             {
                 richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Bold);
             }
@@ -115,17 +115,17 @@ namespace BaskEditor
             {
                 richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Regular);
             }
+            
         }
 
         private void AtivarItalico()
         {
             float tamanhoDaFonte = 0;
-            bool italico = false;
-
             tamanhoDaFonte = richTextBox1.Font.Size;
-            italico = richTextBox1.Font.Italic;
 
-            if (italico == false)
+            var verificarSeItalicoEstaAtivo = richTextBox1.SelectionFont.Style == FontStyle.Regular;
+
+            if (verificarSeItalicoEstaAtivo == true)
             {
                 richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Italic);
             }
@@ -138,12 +138,11 @@ namespace BaskEditor
         private void AtivarSublinhado()
         {
             float tamanhoDaFonte = 0;
-            bool sublinhado = false;
-
             tamanhoDaFonte = richTextBox1.Font.Size;
-            sublinhado = richTextBox1.Font.Underline;
 
-            if (sublinhado == false)
+            var verificarSeSublinhadoEstaAtivo = richTextBox1.SelectionFont.Style == FontStyle.Regular;
+
+            if (verificarSeSublinhadoEstaAtivo == true)
             {
                 richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Underline);
             }

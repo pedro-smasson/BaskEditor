@@ -99,33 +99,33 @@ namespace BaskEditor
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.novoToolStripMenuItem.Text = "Novo Documento";
             this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
             // abrirDocumentoToolStripMenuItem
             // 
             this.abrirDocumentoToolStripMenuItem.Name = "abrirDocumentoToolStripMenuItem";
-            this.abrirDocumentoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirDocumentoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.abrirDocumentoToolStripMenuItem.Text = "Abrir Documento";
             this.abrirDocumentoToolStripMenuItem.Click += new System.EventHandler(this.abrirDocumentoToolStripMenuItem_Click);
             // 
             // salvarDocumentoToolStripMenuItem
             // 
             this.salvarDocumentoToolStripMenuItem.Name = "salvarDocumentoToolStripMenuItem";
-            this.salvarDocumentoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salvarDocumentoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.salvarDocumentoToolStripMenuItem.Text = "Salvar Documento";
             this.salvarDocumentoToolStripMenuItem.Click += new System.EventHandler(this.salvarDocumentoToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(172, 6);
             // 
             // fecharDocumentoToolStripMenuItem
             // 
             this.fecharDocumentoToolStripMenuItem.Name = "fecharDocumentoToolStripMenuItem";
-            this.fecharDocumentoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fecharDocumentoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.fecharDocumentoToolStripMenuItem.Text = "Fechar Documento";
             // 
             // opçõesToolStripMenuItem
@@ -314,7 +314,7 @@ namespace BaskEditor
             this.tsSair.Image = ((System.Drawing.Image)(resources.GetObject("tsSair.Image")));
             this.tsSair.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsSair.Name = "tsSair";
-            this.tsSair.Size = new System.Drawing.Size(23, 22);
+            this.tsSair.Size = new System.Drawing.Size(23, 20);
             this.tsSair.Text = "Sair";
             // 
             // richTextBox1
