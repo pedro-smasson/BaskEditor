@@ -7,12 +7,12 @@ namespace BaskEditor
 {
     public partial class TelaInicial : Form
     {
-        private StringReader _imprima;
+        private StringReader _imprimir;
 
         public TelaInicial()
         {
             InitializeComponent();
-            richTextBox1.SelectionFont = new Font("Tahoma", 12, FontStyle.Regular);
+            rtbPrincipal.SelectionFont = new Font("Tahoma", 12, FontStyle.Regular);
         }
 
         private void SalvarArquivo()
@@ -21,13 +21,12 @@ namespace BaskEditor
             {
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    FileStream fileStream = new FileStream(saveFileDialog1.FileName, FileMode.OpenOrCreate,
-                    FileAccess.Write);
-
+                    FileStream fileStream = new FileStream(saveFileDialog1.FileName, FileMode.OpenOrCreate, FileAccess.Write);
                     StreamWriter streamWriter = new StreamWriter(fileStream);
+
                     streamWriter.Flush();
                     streamWriter.BaseStream.Seek(0, SeekOrigin.Begin);
-                    streamWriter.Write(richTextBox1.Text);
+                    streamWriter.Write(rtbPrincipal.Text);
                     streamWriter.Flush();
                     streamWriter.Close();
                 }
@@ -40,13 +39,13 @@ namespace BaskEditor
 
         private void VerificarSalvarArquivo()
         {
-            if (string.IsNullOrEmpty(richTextBox1.Text))
+            if (string.IsNullOrEmpty(rtbPrincipal.Text))
                 MessageBox.Show("Impossível salvar um arquivo vazio!", "Arquivo Vazio");
 
             else
             {
-                if ((MessageBox.Show("Deseja salvar o arquivo?", "Salvar Arquivo", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes))
+                if (MessageBox.Show("Deseja salvar o arquivo?", "Salvar Arquivo", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
                     SalvarArquivo();
                 }
@@ -80,12 +79,12 @@ namespace BaskEditor
                     StreamReader streamReader = new StreamReader(fileStream);
                     streamReader.BaseStream.Seek(0, SeekOrigin.Begin);
 
-                    richTextBox1.Text = "";
+                    rtbPrincipal.Text = "";
                     string linha = streamReader.ReadLine();
 
                     while (linha != null)
                     {
-                        richTextBox1.Text += linha + "\n";
+                        rtbPrincipal.Text += linha + "\n";
                         linha = streamReader.ReadLine();
                     }
                     streamReader.Close();
@@ -99,44 +98,44 @@ namespace BaskEditor
 
         private void AtivarNegrito()
         {
-            float tamanhoDaFonte = richTextBox1.Font.Size;
-            var verificarSeNegritoEstaAtivo = richTextBox1.SelectionFont.Style == FontStyle.Regular;
+            float tamanhoDaFonte = rtbPrincipal.Font.Size;
+            var verificarSeNegritoEstaAtivo = rtbPrincipal.SelectionFont.Style == FontStyle.Regular;
 
             if (verificarSeNegritoEstaAtivo)
-                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Bold);
+                rtbPrincipal.SelectionFont = new Font(rtbPrincipal.Font.Name, tamanhoDaFonte, FontStyle.Bold);
 
             else
-                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Regular);
+                rtbPrincipal.SelectionFont = new Font(rtbPrincipal.Font.Name, tamanhoDaFonte, FontStyle.Regular);
         }
 
         private void AtivarItalico()
         {
-            float tamanhoDaFonte = richTextBox1.Font.Size;
-            var verificarSeItalicoEstaAtivo = richTextBox1.SelectionFont.Style == FontStyle.Regular;
+            float tamanhoDaFonte = rtbPrincipal.Font.Size;
+            var verificarSeItalicoEstaAtivo = rtbPrincipal.SelectionFont.Style == FontStyle.Regular;
 
             if (verificarSeItalicoEstaAtivo)
-                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Italic);
+                rtbPrincipal.SelectionFont = new Font(rtbPrincipal.Font.Name, tamanhoDaFonte, FontStyle.Italic);
 
             else
-                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Regular);
+                rtbPrincipal.SelectionFont = new Font(rtbPrincipal.Font.Name, tamanhoDaFonte, FontStyle.Regular);
         }
 
         private void AtivarSublinhado()
         {
-            float tamanhoDaFonte = richTextBox1.Font.Size;
-            var verificarSeSublinhadoEstaAtivo = richTextBox1.SelectionFont.Style == FontStyle.Regular;
+            float tamanhoDaFonte = rtbPrincipal.Font.Size;
+            var verificarSeSublinhadoEstaAtivo = rtbPrincipal.SelectionFont.Style == FontStyle.Regular;
 
             if (verificarSeSublinhadoEstaAtivo)
-                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Underline);
+                rtbPrincipal.SelectionFont = new Font(rtbPrincipal.Font.Name, tamanhoDaFonte, FontStyle.Underline);
 
             else
-                richTextBox1.SelectionFont = new Font(richTextBox1.Font.Name, tamanhoDaFonte, FontStyle.Regular);
+                rtbPrincipal.SelectionFont = new Font(rtbPrincipal.Font.Name, tamanhoDaFonte, FontStyle.Regular);
         }
 
         private void AlterarFonte()
         {
-            if (richTextBox1.SelectionFont != null)
-                richTextBox1.SelectionFont = fontDialog1.Font;
+            if (rtbPrincipal.SelectionFont != null)
+                rtbPrincipal.SelectionFont = fontDialog1.Font;
         }
 
         private void ConfigurarImpressora()
@@ -156,8 +155,8 @@ namespace BaskEditor
         {
             printDialog1.Document = printDocument1;
 
-            string documentoASerImpresso = richTextBox1.Text;
-            _imprima = new StringReader(documentoASerImpresso);
+            string documentoASerImpresso = rtbPrincipal.Text;
+            _imprimir = new StringReader(documentoASerImpresso);
 
             if (printDialog1.ShowDialog() == DialogResult.OK)
                 printDocument1.Print();
@@ -178,11 +177,11 @@ namespace BaskEditor
             if (margemDeCima < 5)
                 margemDeCima = 20;
 
-            Font fonteImprimir = richTextBox1.Font;
+            Font fonteImprimir = rtbPrincipal.Font;
             SolidBrush pincel = new SolidBrush(Color.Black);
 
             linhasPagina = e.MarginBounds.Height / fonteImprimir.GetHeight(e.Graphics);
-            string linha = _imprima.ReadLine();
+            string linha = _imprimir.ReadLine();
 
             while (contador < linhasPagina)
             {
@@ -190,7 +189,7 @@ namespace BaskEditor
                 e.Graphics.DrawString(linha, fonteImprimir, pincel, margemEsquerda, y, new StringFormat());
 
                 contador += 1;
-                linha = _imprima.ReadLine();
+                linha = _imprimir.ReadLine();
             }
             if (linha != null)
                 e.HasMorePages = true;
@@ -208,28 +207,25 @@ namespace BaskEditor
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             VerificarSalvarArquivo();
-            richTextBox1.Clear();
-            richTextBox1.Focus();
+            rtbPrincipal.Clear();
+            rtbPrincipal.Focus();
         }
 
         private void tsNovo_Click(object sender, EventArgs e)
         {
             VerificarSalvarArquivo();
-            richTextBox1.Clear();
-            richTextBox1.Focus();
+            rtbPrincipal.Clear();
+            rtbPrincipal.Focus();
         }
 
         private void esquerdaToolStripMenuItem_Click(object sender, EventArgs e)
-            => richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
-
+            => rtbPrincipal.SelectionAlignment = HorizontalAlignment.Left;
 
         private void centralizadoToolStripMenuItem_Click(object sender, EventArgs e)
-            => richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
-
+            => rtbPrincipal.SelectionAlignment = HorizontalAlignment.Center;
 
         private void direitaToolStripMenuItem_Click(object sender, EventArgs e)
-            => richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
-
+            => rtbPrincipal.SelectionAlignment = HorizontalAlignment.Right;
 
         private void salvarDocumentoToolStripMenuItem_Click(object sender, EventArgs e) => VerificarSalvarArquivo();
 

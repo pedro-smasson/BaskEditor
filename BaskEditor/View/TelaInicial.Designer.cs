@@ -58,7 +58,7 @@ namespace BaskEditor
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsImprimir = new System.Windows.Forms.ToolStripButton();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtbPrincipal = new System.Windows.Forms.RichTextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
@@ -314,18 +314,18 @@ namespace BaskEditor
             this.tsSair.Image = ((System.Drawing.Image)(resources.GetObject("tsSair.Image")));
             this.tsSair.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsSair.Name = "tsSair";
-            this.tsSair.Size = new System.Drawing.Size(23, 20);
+            this.tsSair.Size = new System.Drawing.Size(23, 22);
             this.tsSair.Text = "Sair";
             this.tsSair.Click += new System.EventHandler(this.tsSair_Click);
             // 
-            // richTextBox1
+            // rtbPrincipal
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.richTextBox1.Location = new System.Drawing.Point(0, 53);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(800, 395);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.rtbPrincipal.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.rtbPrincipal.Location = new System.Drawing.Point(0, 53);
+            this.rtbPrincipal.Name = "rtbPrincipal";
+            this.rtbPrincipal.Size = new System.Drawing.Size(800, 395);
+            this.rtbPrincipal.TabIndex = 2;
+            this.rtbPrincipal.Text = "";
             // 
             // openFileDialog1
             // 
@@ -355,7 +355,7 @@ namespace BaskEditor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.rtbPrincipal);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
@@ -403,7 +403,7 @@ namespace BaskEditor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsImprimir;
         private System.Windows.Forms.ToolStripButton tsSair;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtbPrincipal;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PrintDialog printDialog1;
